@@ -1,13 +1,17 @@
+import { Globe } from "./Globe"
 
 function Hero() {
     return (
-        <div className="relative">
-            <div className="absolute mt-16 inset-0 bg-gradient-to-l from-blue-700 via-slate-800 to-fuchsia-900 opacity-40 blur-3xl"></div>
-            <div className='relative text-5xl mt-28 leading-13 text-center tracking-tighter  font-bold bg-gradient-to-l from-blue-700 via-sky-900 to-fuchsia-600 bg-clip-text text-transparent '>
-                Your one-stop solution to search, borrow, and manage books seamlessly!
+        <div className="flex flex-col mt-24 ">
+
+            <div className='absolute inset-x-0 text-4xl mt-6 leading-9 text-center tracking-tighter  font-bold bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 bg-clip-text text-transparent '>
+                Your one-stop solution <div className="italic font-normal tracking-tighter text-xl"> to search, borrow, and manage books seamlessly!</div>
 
             </div>
-            
+            <div className='relative mt-4 z-[-1] flex scale-[68%] sm:scale-[100%] justify-center'>
+                <Globe />
+            </div>
+
 
         </div>
     )
