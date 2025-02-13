@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect , useRef } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { CiMinimize1 } from "react-icons/ci";
@@ -13,6 +13,15 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
+  const chatRef = useRef(null);
+  
+  useEffect(() => {
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+    }
+  }, [messages]);
+  
 
   const fetchChatResponse = async (message) => {
     try {
@@ -55,7 +64,7 @@ const Chatbot = () => {
   };
 
   return (
-    <div className="flex justify-center w-full fixed bottom-6 right-6">
+    <div className="flex justify-center w-full fixed bottom-2 right-2 sm:bottom-6 sm:right-6">
       {!isOpen ? (
         
         <motion.div
@@ -74,7 +83,7 @@ const Chatbot = () => {
         
       ) : (
         <motion.div
-          className="w-auto absolute bottom-0 right-0 bg-neutral-100 text-neutral-900 border-[1px] border-neutral-200 shadow-lg rounded-xl overflow-hidden"
+          className="max-w-[358px] absolute bottom-0 right-0 bg-neutral-100 text-neutral-900 border-[1px] border-neutral-200 shadow-lg rounded-xl overflow-hidden"
           initial={{ opacity: 0, width: 0, x:50 }}
           animate={{ opacity: 1, width: "24rem" , x:0 }}
           exit={{ opacity: 0, width: 0, x:50 }}
@@ -83,10 +92,20 @@ const Chatbot = () => {
         >
           <div className="bg-neutral-100 text-neutral-900 p-2 flex justify-between items-center font-semibold">
             <span className="p-2 text-orange-600"><SiPerplexity size={18}/></span>
-            <div onClick={() => setIsOpen(false)}
+            <div onClick={() => { setIsOpen(false); setShowWelcome(true); }}
                 className="text-neutral-900 hover:scale-[112%] transition-all duration-300 cursor-pointer  p-2 rounded-md"><CiMinimize1 size={18}/></div>
           </div>
-          <div className="p-3 h-64 overflow-y-auto space-y-2">
+          <div ref={chatRef} className="p-3 h-64 overflow-y-auto space-y-2">
+          {showWelcome && (
+              <motion.div
+                className="text-xl font-semibold tracking-tighter text-neutral-900 p-2 cursor-default select-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+               <span className="text-orange-600"> Hi! </span> I'm your study assistant. Ask me anything about your subjects .
+              </motion.div>
+            )}
             {messages.map((msg, index) => (
               <motion.div
                 key={index}
@@ -108,12 +127,15 @@ const Chatbot = () => {
               className="flex-grow p-2 border border-neutral-200 placeholder:tracking-tighter placeholder:text-sm   rounded-md bg-neutral-50 text-neutral-900 focus:outline-none focus:ring-2 focus:ring-neutral-900"
               placeholder="Ask a study question..."
               value={input}
-              onChange={(e) => setInput(e.target.value)}
+              onChange={(e) => {
+                setInput(e.target.value);
+                if (showWelcome) setShowWelcome(false);
+              }}
               onKeyDown={handleKeyDown}
             />
             <div
               onClick={handleSend}
-              className="ml-2 flex gap-2 items-center bg-neutral-900 px-3 py-[10px] tracking-tighter text-sm rounded-md text-white hover:bg-neutral-800"
+              className="ml-2 cursor-pointer select-none flex gap-2 items-center bg-neutral-900 px-3 py-[10px] tracking-tighter text-sm rounded-md text-white hover:bg-neutral-800"
             >
               Send<LuSend/>
             </div>
