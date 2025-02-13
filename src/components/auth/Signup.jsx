@@ -19,7 +19,7 @@ function Signup() {
     return (
         <div className="flex justify-center font-poppins mt-28">
             
-                <div className="relative bg-neutral-50 text-neutral-900 p-3 rounded-lg    h-min w-96">
+                <div className="relative bg-neutral-50 text-neutral-900 p-3 rounded-lg    h-min sm:max-w-sm w-full overflow-hidden">
                 
                     <div className="text-5xl font-semibold   tracking-tighter mb-4 leading-16 mt-2 bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 bg-clip-text text-transparent">&#42;SignIn</div>
                     <form onSubmit={handleSubmit} className="space-y-3 mt-12">
