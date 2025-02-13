@@ -1,3 +1,4 @@
+import Chatbot from "../chatbot/Chatbot"
 import TypingAnimation from "../TypingAnimation"
 import { Globe } from "./Globe"
 
@@ -23,6 +24,10 @@ function Hero() {
             </div>
             <div className="flex w-full justify-center -z-[2] ">
             <div className="flex bg-neutral-700 w-full max-w-sm justify-center h-6 mt-[486px] rounded-full blur-[70px]"></div>
+            </div>
+            <div className="flex ">
+                <Chatbot/>
+                
             </div>
 
         </div>
