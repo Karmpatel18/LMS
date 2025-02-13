@@ -9,6 +9,7 @@ function App() {
 
   return (
     <Router>
+    <div className='flex w-full min-h-screen items-start '>  
     <div className='flex   w-full justify-center '>
 
       <div className='font-poppins flex flex-col max-w-3xl w-full justify-center mx-[16px] sm:mx-[16px] md:mx-[16px] lg:mx-0 '>
@@ -28,6 +29,7 @@ function App() {
         
       </div>
     </div>
+    </div> 
     </Router>
   )
 }

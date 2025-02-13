@@ -13,7 +13,7 @@ const TypingAnimation = ({
   startOnView = false,
   ...props
 }) => {
-  const MotionComponent = motion(Component);
+  const MotionComponent = motion.create(Component);
   const [displayedText, setDisplayedText] = useState("");
   const [started, setStarted] = useState(false);
   const elementRef = useRef(null);
@@ -64,7 +64,7 @@ const TypingAnimation = ({
   return (
     <MotionComponent
       ref={elementRef}
-      className={`text-4xl font-bold leading-[5rem] tracking-[-0.02em] ${className}`}
+      className={`text-4xl font-bold mt-2 tracking-[-0.02em] ${className}`}
       {...props}
     >
       {displayedText}

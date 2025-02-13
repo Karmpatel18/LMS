@@ -21,7 +21,7 @@ function Signup() {
             
                 <div className="relative bg-neutral-50 text-neutral-900 p-3 rounded-lg    h-min sm:max-w-sm w-full overflow-hidden">
                 
-                    <div className="text-5xl font-semibold   tracking-tighter mb-4 leading-16 mt-2 bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 bg-clip-text text-transparent">&#42;SignIn</div>
+                    <div className="text-5xl font-semibold   tracking-tighter mb-4 leading-16 mt-2 bg-gradient-to-r from-neutral-900 via-neutral-600 to-neutral-400 bg-clip-text text-transparent select-none">&#42;SignIn</div>
                     <form onSubmit={handleSubmit} className="space-y-3 mt-12">
                         {/* Enrollment Number */}
                         <div>
@@ -55,7 +55,7 @@ function Signup() {
                         <CoolMode>
                             <div
                                 type="submit"
-                                className="flex cursor-pointer w-full border-[1px] border-neutral-900 bg-neutral-900 text-neutral-50 py-2 rounded-md  justify-center hover:bg-neutral-800 hover:border-neutral-800 mt-4 transition"
+                                className="flex select-none cursor-pointer w-full border-[1px] border-neutral-900 bg-neutral-900 text-neutral-50 py-2 rounded-md  justify-center hover:bg-neutral-800 hover:border-neutral-800 mt-4 transition"
                             >
                                 Sign In
                             </div>
