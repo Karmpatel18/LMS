@@ -4,10 +4,10 @@ import axios from "axios";
 import { CiMinimize1 } from "react-icons/ci";
 import { LuSend } from "react-icons/lu";
 import { SiPerplexity } from "react-icons/si";
-import BorderBeam from "../BorderBeam";
 
 
-const API_KEY = "AIzaSyCjm-YGmW64Di9mrksokVLYnfrvfRpT-w4"; // Replace with your actual API key
+
+const API_KEY = import.meta.env.VITE_API_KEY; // Replace with your actual API key
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
